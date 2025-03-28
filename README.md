@@ -19,8 +19,15 @@
   <img src="https://skillicons.dev/icons?i=html,css,python,c,cpp,react,ros,qt,aws,docker,git,fastapi,pytorch,tensorflow,kubernetes,linux" />
 </div>
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Debugsvg&show_icons=true&theme=dark)
-
-
-### 🛠️ Langages les plus utilisés
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Debugsvg&layout=compact&hide_progress=false&theme=dark)
+<div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+  <img 
+    src="https://github-readme-stats.vercel.app/api?username=Debugsvg&show_icons=true&theme=dark" 
+    width="45%"
+    style="box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 10px;"
+  />
+  <img 
+    src="https://github-readme-stats.vercel.app/api/top-langs/?username=Debugsvg&layout=compact&hide_progress=false&theme=dark" 
+    width="45%"
+    style="box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 10px;"
+  />
+</div>
