@@ -12,7 +12,7 @@
 - 🔭 Je suis actuellement **Étudiant en Informatique embarquée**
 - 🌱 J'apprends actuellement **Kubernetes** et **Ansible**
 - 💬 Pose-moi des questions sur **Qt** et **Python**
-- ⚡ Fun fact : J'ai déjà participé à une RoboCup !
+- ⚡ Fun fact : J'ai déjà participé à une RoboCup  !
 
 ### 🛠️ Langages & Outils
 <div align="center">
