@@ -16,7 +16,7 @@
 
 ### 🛠️ Langages & Outils
 <div align="center">
-  <img src="https://skillicons.dev/icons?i=html,css,python,c,cpp,react,ros,qt,aws,docker,git,fastapi,pytorch,tensorflow,kubernetes,linux,javascript" />
+  <img src="https://skillicons.dev/icons?i=html,css,python,c,cpp,react,ros,qt,aws,docker,git,fastapi,pytorch,tensorflow,kubernetes,linux,javascript"/>
 </div>
 
 <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
