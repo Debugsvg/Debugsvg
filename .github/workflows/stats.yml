@@ -1,15 +1,22 @@
 name: Update GitHub Stats
 
 on:
+  push:
+    branches: [main]       # se lance à chaque push
   schedule:
-    - cron: "0 3 * * *"   # tous les jours à 3h
-  workflow_dispatch:        # déclenchement manuel possible
+    - cron: "0 3 * * *"   # mise à jour quotidienne
+  workflow_dispatch:        # déclenchement manuel
+
+permissions:
+  contents: write           # FIX: autorise le push du bot
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate stats card
         uses: readme-tools/github-readme-stats-action@v1
@@ -31,9 +38,10 @@ jobs:
 
       - name: Commit updated cards
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           mkdir -p profile
-          git add profile/*.svg
-          git commit -m "chore: update stats cards" || exit 0
+          git add profile/stats.svg profile/langs.svg
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "chore: update stats cards"
           git push
