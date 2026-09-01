@@ -10,7 +10,6 @@ on:
 
 permissions:
   contents: write
-  metadata: read
 
 jobs:
   build:
@@ -27,47 +26,3 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/user
-
-      - name: Generate stats card
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: stats
-          options: username=Debugsvg&show_icons=true&theme=dark
-          path: profile/stats.svg
-        env:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate top languages card
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: top-langs
-          options: username=Debugsvg&layout=compact&theme=dark
-          path: profile/langs.svg
-        env:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Check generated files
-        run: |
-          echo "Generated files:"
-          ls -lah profile/
-
-          echo "Stats SVG:"
-          test -f profile/stats.svg
-
-          echo "Languages SVG:"
-          test -f profile/langs.svg
-
-      - name: Commit updated cards
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add profile/stats.svg profile/langs.svg
-
-          if git diff --cached --quiet; then
-            echo "No changes"
-            exit 0
-          fi
-
-          git commit -m "chore: update stats cards"
-          git push
