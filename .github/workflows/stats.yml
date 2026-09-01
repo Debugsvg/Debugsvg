@@ -22,18 +22,16 @@ jobs:
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: stats
-          options: username=Debugsvg&show_icons=true&theme=dark
+          options: username=${{ github.repository_owner }}&show_icons=true&theme=dark
           path: profile/stats.svg
-        env:
           token: ${{ secrets.GH_STATS_TOKEN }}
 
       - name: Generate top languages card
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: top-langs
-          options: username=Debugsvg&layout=compact&theme=dark
+          options: username=${{ github.repository_owner }}&layout=compact&theme=dark
           path: profile/langs.svg
-        env:
           token: ${{ secrets.GH_STATS_TOKEN }}
 
       - name: Check generated files
@@ -43,6 +41,11 @@ jobs:
 
           test -f profile/stats.svg
           test -f profile/langs.svg
+
+          if grep -R "Something went wrong\\|Resource not accessible" profile/*.svg; then
+            echo "Generated SVG contains an error card. Check GH_STATS_TOKEN permissions."
+            exit 1
+          fi
 
       - name: Commit updated cards
         run: |
