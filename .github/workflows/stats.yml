@@ -1,13 +1,11 @@
-```yaml
 name: Update GitHub Stats
 
 on:
   push:
-    branches: [main]
-
+    branches:
+      - main
   schedule:
     - cron: "0 3 * * *"
-
   workflow_dispatch:
 
 permissions:
@@ -19,22 +17,24 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Generate stats card
-        uses: stats-organization/github-readme-stats-action@v2
+        uses: readme-tools/github-readme-stats-action@v1
         with:
           card: stats
           options: username=Debugsvg&show_icons=true&theme=dark
           path: profile/stats.svg
+        env:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate top languages card
-        uses: stats-organization/github-readme-stats-action@v2
+        uses: readme-tools/github-readme-stats-action@v1
         with:
           card: top-langs
           options: username=Debugsvg&layout=compact&theme=dark
           path: profile/langs.svg
+        env:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit updated cards
@@ -42,10 +42,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          mkdir -p profile
+
           git add profile/stats.svg profile/langs.svg
 
-          git diff --cached --quiet && echo "No changes" && exit 0
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
 
           git commit -m "chore: update stats cards."
           git push
-```
