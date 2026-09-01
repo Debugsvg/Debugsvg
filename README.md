@@ -4,7 +4,7 @@
 </p>
 <p align="center">
   <a href="https://www.linkedin.com/in/yann-suedois-0677aa1b2/"><img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
-  <a href="https://debugsvg.github.io/portfolio/"><img src="https://img.shields.io/badge/Portfolio-purple?style=for-the-badge&logo=github&logoColor=white" /></a>
+  <a href="wondrous-cocada-7f10dc.netlify.app"><img src="https://img.shields.io/badge/Portfolio-purple?style=for-the-badge&logo=github&logoColor=white" /></a>
 </p>
 🚀 À propos de moi
 
